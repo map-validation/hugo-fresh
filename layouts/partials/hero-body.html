@@ -3,6 +3,8 @@
 {{- $subtitle   := index $hero "subtitle" }}
 {{- $buttonText := index $hero "buttontext" }}
 {{- $buttonLink := index $hero "buttonlink" }}
+{{- $button2Text := index $hero "button2text" }}
+{{- $button2Link := index $hero "button2link" }}
 {{- $image      := index $hero "image" }}
 <div class="hero-body">
   <div class="container">
@@ -11,7 +13,7 @@
         <h1 class="title is-1 is-bold is-spaced">
           {{ $title }}
         </h1>
-        {{ with $subtitle }}
+        {{ with $subtitle | safeHTML }}
         <h2 class="subtitle is-5 is-muted">
           {{ . }}
         </h2>
@@ -20,10 +22,15 @@
           <a class="button cta rounded primary-btn raised" href="{{ $buttonLink }}">
             {{ $buttonText }}
           </a>
+	  {{- if $button2Text }}
+          <a class="button cta rounded primary-btn raised" href="{{ $button2Link }}">
+            {{ $button2Text }}
+          </a>
+	  {{- end }}
         </p>
       </div>
       <div class="column is-5 is-offset-1">
-        <figure class="image is-4by3">
+        <figure class="boximage is-4by3">
           <img src="{{ printf "/images/%s" $image | relURL }}" alt="Description">
         </figure>
       </div>

@@ -2,11 +2,15 @@
 {{- $title    := index $section1 "title" }}
 {{- $subtitle := index $section1 "subtitle" }}
 {{- $tiles    := index $section1 "tiles" }}
-<section class="section section-feature-grey is-medium">
+{{- $footer   := index $section1 "footer" }}
+<section class="section section-feature-grey is-medium" id="section1">
   <div class="container">
     <div class="title-wrapper has-text-centered">
       <h2 class="title is-2">{{ $title }}</h2>
-      <h3 class="subtitle is-5 is-muted">{{ $subtitle }}</h3>
+      <br>
+    </div>
+    <div class="title-wrapper has-text-justified">
+      <h3 class="subtitle is-5">{{ $subtitle | safeHTML }}</h3>
       <div class="divider is-centered"></div>
     </div>
 
@@ -24,13 +28,21 @@
             <div class="card-text">
                 <p>{{ .text }}</p>
             </div>
+	    {{- if .buttonText }}
             <div class="card-action">
               <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
             </div>
+	    {{- end }}
           </div>
         </div>
         {{- end }}
       </div>
+      {{- if $footer }}
+      <div class="title-wrapper has-text-centered">
+        <h3 class="subtitle is-5">{{ $footer }}</h3>
+        <div class="divider is-centered"></div>
+      </div>
+      {{- end }}
     </div>
   </div>
 </section>
