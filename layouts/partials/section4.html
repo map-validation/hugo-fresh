@@ -15,16 +15,25 @@
     <div class="content-wrapper">
       <div class="columns is-vcentered">
         {{- range $clients }}
-        <div class="column is-6">
+        <div class="column is-4">
           <figure class="testimonial">
             <blockquote>
               {{ .quote }}
             </blockquote>
+	    {{- if .img2 }}
+            <div class="author2">
+		    <p><img src="{{ printf "/images/illustrations/faces/%s.png" (string .img) | relURL }}" alt=""/>
+		    <img src="{{ printf "/images/illustrations/faces/%s.png" (string .img2) | relURL }}" alt=""/></p>
+              <h5>{{ .name }}</h5>
+	      <span>{{ .job }}<br>{{ .company | safeHTML }}</span>
+            </div>
+	    {{- else }}
             <div class="author">
               <img src="{{ printf "/images/illustrations/faces/%s.png" (string .img) | relURL }}" alt=""/>
               <h5>{{ .name }}</h5>
 	      <span>{{ .job }}<br>{{ .company | safeHTML }}</span>
             </div>
+	    {{- end }}
           </figure>
         </div>
         {{- end }}
