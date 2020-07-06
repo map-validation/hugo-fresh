@@ -1,13 +1,43 @@
 {{- $section5 := .Site.Params.section5 }}
 {{- $title    := index $section5 "title" }}
 {{- $subtitle := index $section5 "subtitle" }}
-{{- $features := index $section5 "features" }}
+{{- $timeslots := index $section5 "timeslots" }}
 <section class="section is-medium" id="section5">
   <div class="container">
 
     <div class="title-wrapper has-text-centered">
       <h2 class="title is-2">{{ $title }}</h2>
       <h3 class="subtitle is-5 is-muted">{{ $subtitle | safeHTML}}</h3>
+    </div>
+    <div class="content-wrapper">
+      <div class="columns">
+      <div class="column is-12">
+      <table>
+	<tr>
+	  <th>Begin</th>
+	  <th></th>
+	  <th>End</th>
+	  <th>Title</th>
+	  <th>Speaker/Author</th>
+	  <th>Type</th>
+	</tr>
+	{{- range $timeslots }}
+	{{- if .color }}
+	<tr style="background-color: {{ .color }}">
+	{{- else }}
+	<tr>
+	{{- end }}
+	  <td>{{ .begin }}</td>
+	  <td>-</td>
+	  <td>{{ .end }}</td>
+	  <td>{{ .title }}</td>
+	  <td>{{ .author }}</td>
+	  <td>{{ .type }}</td>
+	</tr>
+	{{- end }}
+      </table>
+      </div>
+      </div>
     </div>
     <div class="media-content mt-20">    
       <div class="divider is-centered"></div>
