@@ -1,0 +1,30 @@
+/* ==========================================================================
+Testimonials Styles
+========================================================================== */
+
+.announcements {
+    position: relative;
+    margin: 40px auto;
+    width: 100%;
+    color: #fff;
+    text-align: left;
+    box-shadow: none !important;
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    blockquote {
+        margin: 0;
+//        display: block;
+        border-radius: 8px;
+//        position: relative;
+        background-color: $primary;
+        padding: 30px 80px 30px 80px;
+        font-size: 1.0rem;
+        font-weight: 400;
+        margin: 0 0 -40px;
+        line-height: 1.25em;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
+}
+

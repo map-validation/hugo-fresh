@@ -14,8 +14,10 @@
 
     <div class="content-wrapper">
       <div class="columns is-vcentered">
-        {{- range $clients }}
-        <div class="column is-4">
+	{{ $num_clients := div (len $clients) 2 }}
+	{{ $column := printf "column is-%d" (div 12 $num_clients) }}
+	{{- range $client_index, $client := $clients }}
+	<div class={{ $column }}>
           <figure class="testimonial">
             <blockquote>
               {{ .quote }}
@@ -36,6 +38,10 @@
 	    {{- end }}
           </figure>
         </div>
+	{{ if eq $client_index 1 }}
+      </div>
+      <div class="columns is-vcentered">
+	{{- end }}
         {{- end }}
       </div>
     </div>
