@@ -6,7 +6,9 @@
 {{- $button2Text := index $hero "button2text" }}
 {{- $button2Link := index $hero "button2link" }}
 {{- $image      := index $hero "image" }}
-{{- $announcement := index $hero "announcement" }}
+{{- $announcements := index $hero "announcements" }}
+{{- $announcement1 := index $hero "announcement1" }}
+{{- $announcement2 := index $hero "announcement2" }}
 <div class="hero-body">
   <div class="container">
     <div class="columns is-vcentered">
@@ -36,16 +38,20 @@
         </figure>
       </div>
       </div>
-        {{ with $announcement }}
-        <div class="column is-9 is-offset-1">
+      <div class="column is-9 is-offset-1">
+      {{- range $announcements }}
           <figure class="announcements">
+          {{- if .background_color }}
+  	  <blockquote style='background-color: {{ .background_color }}'>
+          {{- else }}
   	  <blockquote>
+          {{- end }}
               <h2><b>{{ .title }}</b></h2>
 	      {{ .text | safeHTML }}
   	  </blockquote>
   	</figure>
-        </div>
-        {{ end }}
+        <br/>
+      {{- end}}
       </div>
     </div>
   </div>
