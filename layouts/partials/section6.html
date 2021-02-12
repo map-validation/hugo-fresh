@@ -1,9 +1,7 @@
 {{- $section6 := .Site.Params.section6 }}
 {{- $title    := index $section6 "title" }}
 {{- $subtitle := index $section6 "subtitle" }}
-{{- $clients_a  := index $section6 "clients_a" }}
-{{- $clients_b  := index $section6 "clients_b" }}
-{{- $clients_c  := index $section6 "clients_c" }}
+{{- $clients  := index $section6 "clients" }}
 <section class="section is-medium section-secondary" id="section6">
   <div class="container">
 
@@ -15,8 +13,9 @@
     </div>
 
     <div class="content-wrapper">
+      {{- range $row := $clients }}
       <div class="columns is-vcentered">
-        {{- range $clients_a }}
+        {{- range $row }}
         <div class="column is-6">
           <figure class="biographies">
             <blockquote>
@@ -31,38 +30,7 @@
         </div>
         {{- end }}
       </div>
-      <div class="columns is-vcentered">
-        {{- range $clients_b }}
-        <div class="column is-6">
-          <figure class="biographies">
-            <blockquote>
-              {{ .quote }}
-            </blockquote>
-            <div class="author">
-              <img src="{{ printf "/images/illustrations/faces/%s.png" (string .img) | relURL }}" alt=""/>
-              <h5>{{ .name }}</h5>
-	      <span>{{ .job }}<br>{{ .company }}</span>
-            </div>
-          </figure>
-        </div>
-        {{- end }}
-      </div>
-      <div class="columns is-vcentered">
-        {{- range $clients_c }}
-        <div class="column is-6">
-          <figure class="biographies">
-            <blockquote>
-              {{ .quote }}
-            </blockquote>
-            <div class="author">
-              <img src="{{ printf "/images/illustrations/faces/%s.png" (string .img) | relURL }}" alt=""/>
-              <h5>{{ .name }}</h5>
-	      <span>{{ .job }}<br>{{ .company }}</span>
-            </div>
-          </figure>
-        </div>
-        {{- end }}
-      </div>
+      {{- end }}
     </div>
   </div>
 </section>
