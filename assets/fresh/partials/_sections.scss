@@ -23,6 +23,9 @@ Section Styles
     .subtitle {
         &.is-muted {
             color: $muted-grey;
+            ul {
+                padding-left: 25px;
+            }
         }
     }
 }
